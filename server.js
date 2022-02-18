@@ -193,21 +193,28 @@ const servidor = http.createServer((req, res) => {
 			}
 		}
 
-		res.end('<h1><br>' + escritaFinal + '</h1>'); // isso será escrito na página
-	
-		fs.appendFile("numeracoes.json", '{ "extenso": "' + escritaFinal + '" }', (err) => { // para salvar no arquivo
-			
-			if(err){
-				throw err;
-			}
+		if(escritaFinal != 'undefined'){
+
+			res.end('<h1><br>' + escritaFinal + '</h1>'); // isso será escrito na página
 		
-		});
+			fs.appendFile("numeracoes.json", '{ "extenso": "' + escritaFinal + '" }', (err) => { // para salvar no arquivo
+				
+				if(err){
+					throw err;
+				}
+			
+			});
+
+		} else {
+
+			res.end('<h1><br>Escolha um numero e coloque apos ":3000/"</h1>');
+
+		}
 
 	}
 
 });
 
 servidor.listen(3000, 'localhost', () => {
-	console.log('servidor de pé em: http://localhost:3000');
-	console.log('Pra desligar esse servidor: crtl + c');
+	console.log('Pra fechar o programa/servidor: crtl + c');
 })
