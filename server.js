@@ -48,6 +48,7 @@ var dezenaUnidadeEscrita = '';
 var acimaMilharEscrita = '';
 var abaixoMilharEscrita = '';
 var urlNumerica = 0;
+var fs = require('fs');
 
 function dezenaEUnidade(numAux){
 
@@ -167,8 +168,6 @@ const http = require('http');
 
 const servidor = http.createServer((req, res) => {
 
-	console.log(req.url);
-
 	var escritaFinal = '';
 
 	if(req.url != '/favicon.ico'){
@@ -195,6 +194,15 @@ const servidor = http.createServer((req, res) => {
 		}
 
 		res.end('<h1><br>' + escritaFinal + '</h1>'); // isso será escrito na página
+	
+		fs.appendFile("numeracoes.json", '{ "extenso": "' + escritaFinal + '" }', (err) => { // para salvar no arquivo
+			
+			if(err){
+				throw err;
+			}
+		
+		});
+
 	}
 
 });
