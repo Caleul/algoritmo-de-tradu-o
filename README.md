@@ -2,7 +2,7 @@
 
 ## esse algoritmo precisa apenas do Node.js instalado para funcionar
 
-A partir daí, pelo terminal no local do arquivo, é só rodar o comando:
+A partir daí é só rodar o seguinte comando pelo terminal, no local do arquivo:
 #### node server.js
 
 Depois disso um servidos local já estara em funcionamento, então para executar os testes basta entrar pelo navegador em:
